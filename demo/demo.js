@@ -1,3 +1,3 @@
 $(function(){
-	// do stuff
+	$("#dial").dial();
 });
