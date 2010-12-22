@@ -1,13 +1,28 @@
+/*
+ * jQuery UI Dial 0.1.0
+ *
+ * Copyright 2010 Emil Loer (http://koffietijd.net)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * https://github.com/thedjinn/jquery-ui-dial
+ *
+ * Depends:
+ *	jquery.ui.core.js
+ *	jquery.ui.widget.js
+ *	jquery.ui.mouse.js
+ *	jquery.ui.draggable.js
+ */
 (function($, undefined) {
 	$.widget("ui.dial", {
 		options: {
 			min: -100,
 			max: 100,
-			default: 25,
+			default: 0,
 			unitsPerPixel: 1,
 
-			numImages: 41,
-			imageWidth: 36
+			numImages: 10,
+			imageWidth: 32
 		},
 
 		_create: function() {
@@ -25,20 +40,20 @@
 				addClasses: false,
 
 				drag: function(event, ui) {
-					var val = (self._origValue + (ui.position.top - ui.originalPosition.top) / -self.options.unitsPerPixel);
+					var val = (self._origValue + (ui.position.top - ui.originalPosition.top) * -self.options.unitsPerPixel);
 					ui.position = ui.originalPosition;
 					self.value(val);
 
-					self._trigger("change", event, {foo:"bar"});
+					self._trigger("change", event, {value:self._value});
 				},
 
 				start: function(event, ui) {
 					self._origValue = self._value;
-					self._trigger("start", event, {foo:"bar"});
+					self._trigger("start", event, {value:self._value});
 				},
 
 				stop: function(event, ui) {
-					self._trigger("stop", event, {foo:"bar"});
+					self._trigger("stop", event, {value:self._value});
 				}
 			});
 
