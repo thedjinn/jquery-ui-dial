@@ -3,6 +3,36 @@ jQuery UI dial control
 
 This is a dial widget for jQuery UI.
 
+Usage
+-----
+
+Turning an existing DOM element into a dial widget is pretty easy:
+
+	$("#something").dial();
+
+You can pass in any additional options and event handlers as arguments to the `dial` function, just like regular jQuery UI widgets. Example:
+
+	$("#something").dial({
+		min: 0,
+		max: 11,
+		default: 5,
+		
+		change: function(event, ui) {
+			$("#somethingelse").html("Current value: "+ui.value);
+		}
+	});
+
+The dial widget uses CSS background sprites for the rotating animation. Therefore a bit of extra CSS is necessary to ensure the dial will look like it should:
+
+	.ui-dial {
+		display: inline-block;
+		background: url('dial.png') no-repeat top left;
+		width: 32px;
+		height: 32px;
+	}
+
+See the demo directory in the repository for a complete example.
+
 Options
 -------
 
