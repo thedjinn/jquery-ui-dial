@@ -1,3 +1,7 @@
 $(function(){
-	$("#dial").dial();
+	$("#dial").dial({
+		change: function(event,ui) {
+			console.log(event,ui);
+		}
+	});
 });

@@ -22,14 +22,24 @@
 				helper: 'original',
 				scroll: false,
 				cursor: 'row-resize',
-			}).bind('drag', function(event, ui) {
-				self._value = (self._origValue + (ui.position.top - ui.originalPosition.top) / -self.options.unitsPerPixel);
-				self._value = Math.max(self._value, self.options.min);
-				self._value = Math.min(self._value, self.options.max);
-				ui.position = ui.originalPosition;
-				self._update();
-			}).bind('dragstart', function(event, ui) {
-				self._origValue = self._value;
+				addClasses: false,
+
+				drag: function(event, ui) {
+					var val = (self._origValue + (ui.position.top - ui.originalPosition.top) / -self.options.unitsPerPixel);
+					ui.position = ui.originalPosition;
+					self.value(val);
+
+					self._trigger("change", event, {foo:"bar"});
+				},
+
+				start: function(event, ui) {
+					self._origValue = self._value;
+					self._trigger("start", event, {foo:"bar"});
+				},
+
+				stop: function(event, ui) {
+					self._trigger("stop", event, {foo:"bar"});
+				}
 			});
 
 			this._update();
@@ -40,7 +50,18 @@
 		},
 
 		value: function(newValue) {
-			this._value = this._origValue = 10;
+			if (newValue === undefined) {
+				return this._value;
+			}
+
+			if (typeof newValue === "number") {
+				this._value = newValue;
+				this._value = Math.max(this._value, this.options.min);
+				this._value = Math.min(this._value, this.options.max);
+				this._update();
+			}
+
+			return this;
 		},
 
 		_update: function() {
