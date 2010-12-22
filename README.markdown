@@ -48,3 +48,8 @@ Methods
  * `widget`
  * `value` (get)
  * `value` (set)
+
+License
+-------
+
+The jQuery UI dial project is licensed the same as the jQuery and jQuery UI projects. This means it is available for use in all personal or commercial projects under both the MIT and GPL licenses. Choose the license that best suits your project, and use it accordingly. [More information about licensing](http://jquery.org/license).
