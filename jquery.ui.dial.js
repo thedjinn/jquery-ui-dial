@@ -33,7 +33,7 @@
 
 			this.element.addClass("ui-dial");
 			this.element.draggable({
-				axis:'y',
+				axis: 'y',
 				helper: 'original',
 				scroll: false,
 				cursor: 'row-resize',
@@ -44,16 +44,16 @@
 					ui.position = ui.originalPosition;
 					self.value(val);
 
-					self._trigger("change", event, {value:self._value});
+					self._trigger("change", event, {value: self._value});
 				},
 
 				start: function(event, ui) {
 					self._origValue = self._value;
-					self._trigger("start", event, {value:self._value});
+					self._trigger("start", event, {value: self._value});
 				},
 
 				stop: function(event, ui) {
-					self._trigger("stop", event, {value:self._value});
+					self._trigger("stop", event, {value: self._value});
 				}
 			});
 
