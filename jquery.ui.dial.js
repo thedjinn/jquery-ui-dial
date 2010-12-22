@@ -67,7 +67,7 @@
 		_update: function() {
 			var pos = Math.round((this._value - this.options.min) / (this.options.max - this.options.min) * (this.options.numImages - 1)) * this.options.imageWidth;
 
-			this.element.css("background-position-x", "-" + pos + "px");
+			this.element.css("background-position", "-" + pos + "px 0");
 		}
 	});
 })(jQuery);
