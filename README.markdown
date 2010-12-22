@@ -44,11 +44,11 @@ Options
    Maximum value.  
    Default: 100
 
- * `default`
+ * `default`  
    Initial value.  
    Default: 25
 
- * `unitsPerPixel`
+ * `unitsPerPixel`  
    Amount of units to change the value per pixel of mouse movement.  
    Default: 1
 
