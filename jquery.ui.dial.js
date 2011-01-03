@@ -18,7 +18,7 @@
 		options: {
 			min: -100,
 			max: 100,
-			default: 0,
+			value: 0,
 			unitsPerPixel: 1,
 
 			numImages: 10,
@@ -26,7 +26,7 @@
 		},
 
 		_create: function() {
-			this._value = this.options.default;
+			this._value = this.options.value;
 			this._origValue = this._value;
 
 			var self = this;
