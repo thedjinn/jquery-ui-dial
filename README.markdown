@@ -1,7 +1,9 @@
 jQuery UI dial control
 ======================
 
-This is a dial widget for jQuery UI.
+This is a dial widget for jQuery UI. It is made to imitate the dial controls encountered in various audio processing applications. 
+
+The dial values are represented using an image map. Changing the value of the dial is done by dragging it in a vertical linear motion.
 
 Usage
 -----
@@ -15,7 +17,7 @@ You can pass in any additional options and event handlers as arguments to the `d
 	$("#something").dial({
 		min: 0,
 		max: 11,
-		default: 5,
+		value: 5,
 		
 		change: function(event, ui) {
 			$("#somethingelse").html("Current value: "+ui.value);
@@ -36,48 +38,68 @@ See the demo directory in the repository for a complete example.
 Options
 -------
 
- * `min`  
+ * `min` (Number)
    Minimum value.  
    Default: -100
 
- * `max`  
+ * `max` (Number)
    Maximum value.  
    Default: 100
 
- * `default`  
+ * `value` (Number)
    Initial value.  
    Default: 25
 
- * `unitsPerPixel`  
+ * `unitsPerPixel` (Number)
    Amount of units to change the value per pixel of mouse movement.  
    Default: 1
 
- * `numImages`  
+ * `numImages` (Number)
    Number of images in the image map.  
    Default: TODO
 
- * `imageWidth`  
+ * `imageWidth` (Number)
    Width of an individual dial state image.  
    Default: TODO
 
 Events
 ------
 
- * `start`
- * `change`
- * `stop`
+ * `start(event, ui)`
+   Triggered when the user started dragging the dial. 
+   The current value of the dial is returned as `ui.value`.
+
+ * `change(event, ui)`
+   Triggered when the user changes the value of the dial.
+   The new value of the dial is returned as `ui.value`.
+
+ * `stop(event, ui)`
+   Triggered when the user stopped dragging the dial.
+   The current value of the dial is returned as `ui.value`.
 
 Methods
 -------
 
- * `destroy`
- * `disable`
- * `enable`
- * `option` (individual)
- * `option` (hash)
- * `widget`
- * `value` (get)
- * `value` (set)
+ * `.dial("destroy")`
+   Destroys the dial and all data associated with it.
+
+ * `.dial("disable")`
+   Disables the dial.
+
+ * `.dial("enable")`
+   Enables the dial.
+
+ * `.dial("option", optionName, [value])`
+   Get or set any dial option. If no option is specified, it will act as a getter.
+
+ * `.dial("option", options)`
+   Set multiple dial options at once by providing an options object.
+
+ * `.dial("widget")`
+   Returns the .ui-dial element.
+
+ * `.dial("value, [newValue])`
+   Get or set the dial value. If no value is specified, it will act as a getter.
 
 License
 -------
